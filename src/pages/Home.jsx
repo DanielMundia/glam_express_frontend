@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import ServiceCard from "../components/ServiceCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/home.css"; // Import the CSS file
+import {useAuth} from "../context/AuthContext.jsx";
+import "../styles/home.css";
 
 export default function Home() {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [success, setSuccess] = useState();
     const [error, setError] = useState();
+    const [showAuthPrompt, setShowAuthPrompt]=useState(false);
+    const {user}=useAuth();
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -26,6 +29,14 @@ export default function Home() {
         fetchServices();
     }, []);
 
+    const handleFindBeauticianClick=(e)=>{
+        if (!user) {
+            e.preventDefault();
+            setShowAuthPrompt(true);
+        }
+        // If user is logged in, the default Link behaviour will proceed to /beauticians
+    };
+
     return (
         <div className="home-page">
             <div className="home-container">
@@ -36,9 +47,32 @@ export default function Home() {
                     <Link 
                         to="/beauticians"
                         className="cta-button"
+                        onClick={handleFindBeauticianClick}
                     >
                         Find A Beautician
                     </Link>
+
+                    {showAuthPrompt && (
+                        <div className="auth-prompt">
+                            <p className="auth-message">
+                                You have not logged in. {" "}
+                                <Link to="/login" className="auth-link login-link">
+                                    Login Here
+                                </Link>{" "}
+                                If you have an account or{" "}
+                                <Link to="/register" className="auth-link signup-link">
+                                    Sign Up Here
+                                </Link>{" "}
+                                to register
+                            </p>
+                            <button
+                                className="close-prompt"
+                                onClick={()=>setShowAuthPrompt(false)}
+                            >
+                                &times;
+                            </button>
+                        </div>
+                    )}
                 </section>
 
                 {/* Services Section */}
