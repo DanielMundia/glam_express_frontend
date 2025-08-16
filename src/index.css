@@ -1,0 +1,49 @@
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bootstrap Import */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    @apply font-sans bg-gray-50 text-gray-900;
+  }
+  h1, h2, h3 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow p-4;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Fix for Bootstrap/Tailwind conflicts */
+.btn {
+  @apply transition;
+}
+
+/* Install Tailwind CSS and dependencies */
+/* npm install tailwindcss postcss autoprefixer */
