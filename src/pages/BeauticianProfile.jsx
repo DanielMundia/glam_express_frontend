@@ -78,11 +78,8 @@ export default function BeauticianProfile() {
     const getImageUrl = (imagePath) => {
         if (!imagePath) return null;
         if (imagePath.startsWith('http' )) return imagePath;
-        const cleanPath = imagePath.replace(/^\//, '');
-        return `https://glam-express-backend.onrender.com/${cleanPath}`;
+        return imagePath;
     };
-
-    // --- RENDER LOGIC (No changes below this line ) ---
 
     if (loading) return (
         <div className="flex justify-center items-center min-h-screen">
