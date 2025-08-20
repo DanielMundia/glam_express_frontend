@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import BeauticianCompleteProfile from './pages/BeauticianCompleteProfile';
 import Beauticians from './pages/Beauticians';
 import BeautiacianProfile from "./pages/BeauticianProfile";
@@ -27,6 +29,8 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
+                <Route path='/forgot-password' element={<ForgotPassword/>} />
+                <Route path='reset-password' element={<ResetPassword/>} />
                 <Route path='/completeprofile' element={<BeauticianCompleteProfile />} />
                 <Route path='/beauticiandashboard' element={<BeauticianDashboard />} />
                 <Route path='/customerdashboard' element={<CustomerDashboard />} /> 
