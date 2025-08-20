@@ -359,12 +359,12 @@ export default function BeauticianDashboard() {
                                                 </span>
                                             </td>
                                             <td>
-                                                <button className="action-button chat">
+                                                {/* <button className="action-button chat">
                                                     <i className="fas fa-comment"></i> Chat
                                                 </button>
                                                 <button className="action-button">
                                                     <i className="fas fa-phone"></i> Call
-                                                </button>
+                                                </button> */}
                                             </td>
                                         </tr>
                                     ))}
